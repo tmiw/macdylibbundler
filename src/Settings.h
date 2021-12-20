@@ -78,6 +78,9 @@ void canOverwriteDir(bool permission);
 bool canOverwriteFiles();
 void canOverwriteFiles(bool permission);
 
+bool canCodesign();
+void canCodesign(bool permission);
+
 bool bundleLibs();
 void bundleLibs(bool status);
 

@@ -38,7 +38,7 @@ THE SOFTWARE.
 
 using namespace std;
 
-const string VERSION = "2.2.1 (2021-11-12)";
+const string VERSION = "2.2.2 (2021-12-20)";
 
 void showHelp()
 {
@@ -54,6 +54,7 @@ void showHelp()
     cout << "  -of, --overwrite-files       Allow overwriting files in output directory\n";
     cout << "  -cd, --create-dir            Create output directory if needed\n";
     cout << "  -od, --overwrite-dir         Overwrite (delete) output directory if it exists (implies --create-dir)\n";
+    cout << "  -ns, --no-codesign           Disable ad-hoc codesigning\n";
     cout << "  -n,  --just-print            Print the dependencies found (without copying into app bundle)\n";
     cout << "  -q,  --quiet                 Less verbose output\n";
     cout << "  -v,  --verbose               More verbose output\n";
@@ -121,6 +122,11 @@ int main(int argc, const char* argv[])
         {
             Settings::canOverwriteDir(true);
             Settings::canCreateDir(true);
+            continue;
+        }
+        else if (strcmp(argv[i],"-ns") == 0 || strcmp(argv[i],"--no-codesign") == 0)
+        {
+            Settings::canCodesign(false);
             continue;
         }
         else if (strcmp(argv[i],"-n") == 0 || strcmp(argv[i],"--just-print") == 0)

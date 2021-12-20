@@ -294,6 +294,8 @@ void createDestDir()
 
 void adhocCodeSign(const string& file)
 {
+    if (!Settings::canCodesign())
+        return;
     // Add ad-hoc signature for ARM (Apple Silicon) binaries
     string signCommand = string("codesign --force --deep --preserve-metadata=entitlements,requirements,flags,runtime --sign - \"") + file + "\"";
     if (systemp(signCommand) != 0)

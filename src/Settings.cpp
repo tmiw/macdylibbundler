@@ -41,6 +41,7 @@ namespace Settings {
 
 bool overwrite_files = false;
 bool overwrite_dir = false;
+bool codesign = true;
 bool create_dir = false;
 bool quiet_output = false;
 bool verbose_output = false;
@@ -172,6 +173,9 @@ void canOverwriteDir(bool permission) { overwrite_dir = permission; }
 
 bool canOverwriteFiles() { return overwrite_files; }
 void canOverwriteFiles(bool permission) { overwrite_files = permission; }
+
+bool canCodesign() { return codesign; }
+void canCodesign(bool permission) { codesign = permission; }
 
 bool bundleLibs() { return bundle_libs; }
 void bundleLibs(bool status) { bundle_libs = status; }
